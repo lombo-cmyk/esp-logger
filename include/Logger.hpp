@@ -25,4 +25,11 @@ void LogInfo(std::string_view Tag, Targs... Fargs) {
     ESP_LOGI(Tag.begin(), "%s", s.c_str());
 }
 
+template<typename... Targs>
+void LogError(std::string_view Tag, Targs... Fargs) {
+    std::string s;
+    s = PrepareLogString(Fargs...);
+    ESP_LOGE(Tag.begin(), "%s", s.c_str());
+}
+
 #endif //AIRCONTROLLER_LOGGER_H
